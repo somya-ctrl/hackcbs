@@ -59,6 +59,46 @@ Hosted on dedicated ZeroGPU infrastructure at [`abhay958/TeamSetu`](https://hugg
 
 ---
 
+## 📱 💻 Application UI & Experience Showcase
+
+### 1. Citizen Mobile Application (Flutter)
+The Citizen Mobile App provides intuitive, multilingual civic reporting, real-time GPS geofencing, and live milestone tracking.
+
+| Civic Feed & Discovery | Problem Reporting Flow | GIS Location & Evidence |
+| :---: | :---: | :---: |
+| <img src="./images/mobile_feed.jpeg" width="280" alt="Civic Feed" /> | <img src="./images/mobile_report.jpeg" width="280" alt="Problem Reporting" /> | <img src="./images/mobile_map.jpeg" width="280" alt="GIS Location Tagging" /> |
+
+| Issue Details & AI Tags | Activity & Status Tracking | Media Evidence Upload |
+| :---: | :---: | :---: |
+| <img src="./images/mobile_details_1.jpeg" width="280" alt="Issue Details" /> | <img src="./images/mobile_tracking.jpeg" width="280" alt="Tracking Updates" /> | <img src="./images/mobile_details_2.jpeg" width="280" alt="Media Evidence" /> |
+
+---
+
+### 2. Web Portal & Institutional Dashboards (React + Vite + Tailwind)
+The administrative and academic web portal connects universities, student innovators, and industrial partners to solve and scale grassroots solutions.
+
+#### 🌐 Live Platform Interface
+<p align="center">
+  <img src="./images/web_live_app.png" alt="Live Platform Overview" width="100%" style="border-radius: 8px; border: 1px solid #e2ded0;" />
+</p>
+
+#### 🔍 Explore & Problem Deep-Dive
+| Public Problem Feed & GIS Map | Problem Detail & AI University Allocation |
+| :---: | :---: |
+| <img src="./images/web_explore.jpeg" width="100%" alt="Explore Problems" /> | <img src="./images/web_problem_detail.jpeg" width="100%" alt="Problem Detail with AI Allocation" /> |
+
+#### 🎓 University Challenge Management & Student Team Collaboration
+| University Challenge Adoption Kanban | Team Formation & Milestone Tracking |
+| :---: | :---: |
+| <img src="./images/web_university_dashboard.jpeg" width="100%" alt="University Challenge Board" /> | <img src="./images/web_team_view.jpeg" width="100%" alt="Student Team Collaboration" /> |
+
+#### 🏢 Industry Scaling & Civic Analytics
+| Industry CSR & Partner Matching | Ward-Level Civic Analytics |
+| :---: | :---: |
+| <img src="./images/web_industry_dashboard.jpeg" width="100%" alt="Industry CSR Dashboard" /> | <img src="./images/web_analytics.jpeg" width="100%" alt="Civic Analytics" /> |
+
+---
+
 ## 🏗️ System Architecture
 
 ```mermaid
