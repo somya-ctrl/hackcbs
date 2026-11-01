@@ -127,10 +127,10 @@ def run_deduplication(payload_str: str) -> str:
 # ==========================================
 # API 3: COLLEGE MATCHER ONLY
 # ==========================================
-@spaces.GPU
 def run_college_matching(payload_str: str) -> str:
     """
     API 3: Matches colleges for a problem using Geo proximity + Domain + Semantic Expertise/Infra.
+    Runs on CPU without ZeroGPU quota restrictions.
     """
     try:
         req_dict = _unwrap_payload(payload_str)
@@ -288,4 +288,4 @@ with gr.Blocks(title="HackCBS AI Services") as demo:
         p5_btn.click(fn=run_model_pipeline, inputs=p5_in, outputs=p5_out, api_name="analyze")
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch()
