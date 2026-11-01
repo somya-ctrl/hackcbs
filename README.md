@@ -16,7 +16,7 @@
 ## 📌 Project Resources & Media
 
 - 🎥 **Video Demonstration**: [Watch the Walkthrough Video](https://drive.google.com/file/d/1Sb6AcPJMvTVMxnLyfu7tmwIkm55S8612/view?usp=sharing)
-- 📊 **Pitch Deck & Presentation (PPT)**: [View Presentation Slide Deck](https://docs.google.com/presentation/d/placeholder-deck-id/edit) *(Replace with pitch deck link)*
+- 📊 **Pitch Deck & Presentation (PPT)**: [View Presentation Slide Deck](https://drive.google.com/file/d/1vO7oF5DJHfg96n-lFWe5JgDEELbGuuzP/view?usp=sharing)
 - 🌐 **Production Web Application**: [https://hackcbs-xi.vercel.app/](https://hackcbs-xi.vercel.app/)
 - 🧠 **Hugging Face ML Inference Space**: [https://huggingface.co/spaces/abhay958/TeamSetu](https://huggingface.co/spaces/abhay958/TeamSetu)
 
