@@ -78,9 +78,6 @@ The Citizen Mobile App provides intuitive, multilingual civic reporting, real-ti
 The administrative and academic web portal connects universities, student innovators, and industrial partners to solve and scale grassroots solutions.
 
 #### 🌐 Live Platform Interface
-<p align="center">
-  <img src="./images/web_live_app.png" alt="Live Platform Overview" width="100%" style="border-radius: 8px; border: 1px solid #e2ded0;" />
-</p>
 
 #### 🔍 Explore & Problem Deep-Dive
 | Public Problem Feed & GIS Map | Problem Detail & AI University Allocation |
