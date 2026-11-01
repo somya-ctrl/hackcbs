@@ -727,7 +727,12 @@ const getMatchedCollegesForProblem = async (req, res, next) => {
 
     return res.status(200).json({ success: true, source: 'live_huggingface', data: matchedColleges });
   } catch (err) {
-    next(err);
+    console.error('[Get Matched Colleges Error]:', err.message);
+    return res.status(err.message?.includes('ZeroGPU') ? 429 : 500).json({
+      success: false,
+      message: err.message,
+      data: problem?.collegeSuggestions || []
+    });
   }
 };
 
@@ -754,10 +759,9 @@ const matchCollegesForProblem = async (req, res, next) => {
     });
   } catch (error) {
     console.error('[Match Colleges API Error]:', error);
-    return res.status(500).json({
+    return res.status(error.message?.includes('ZeroGPU') ? 429 : 500).json({
       success: false,
-      message: 'Failed to perform college matching via Hugging Face',
-      error: error.message
+      message: error.message
     });
   }
 };

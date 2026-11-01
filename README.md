@@ -15,9 +15,9 @@
 
 ## 📌 Project Resources & Media
 
-- 🎥 **Video Demonstration**: [Watch the Walkthrough Video](https://youtube.com/watch?v=placeholder-video-id) *(Replace with demo recording link)*
+- 🎥 **Video Demonstration**: [Watch the Walkthrough Video](https://drive.google.com/file/d/1Sb6AcPJMvTVMxnLyfu7tmwIkm55S8612/view?usp=sharing)
 - 📊 **Pitch Deck & Presentation (PPT)**: [View Presentation Slide Deck](https://docs.google.com/presentation/d/placeholder-deck-id/edit) *(Replace with pitch deck link)*
-- 🌐 **Production Web Application**: [https://hackcbs-cjno.onrender.com](https://hackcbs-cjno.onrender.com)
+- 🌐 **Production Web Application**: [https://hackcbs-xi.vercel.app/](https://hackcbs-xi.vercel.app/)
 - 🧠 **Hugging Face ML Inference Space**: [https://huggingface.co/spaces/abhay958/TeamSetu](https://huggingface.co/spaces/abhay958/TeamSetu)
 
 ---

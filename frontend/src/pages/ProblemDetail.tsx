@@ -25,7 +25,8 @@ import {
   Lock,
   ExternalLink,
   Video,
-  Check
+  Check,
+  RefreshCw
 } from 'lucide-react';
 
 // Fix for default marker icon in react-leaflet
@@ -49,6 +50,10 @@ const ProblemDetail = () => {
   const [commentsLoading, setCommentsLoading] = useState(true);
   const [newComment, setNewComment] = useState('');
   const [submittingComment, setSubmittingComment] = useState(false);
+
+  // College Matcher triggering state
+  const [matchingColleges, setMatchingColleges] = useState(false);
+  const [collegeMatchError, setCollegeMatchError] = useState<string | null>(null);
   
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -127,6 +132,32 @@ const ProblemDetail = () => {
 
     fetchProblemAndComments();
   }, [id, navigate, user._id, user.id]);
+
+  const handleTriggerCollegeMatching = async () => {
+    if (matchingColleges) return;
+    setMatchingColleges(true);
+    setCollegeMatchError(null);
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+      const res = await fetch(`https://hackcbs-cjno.onrender.com/api/problems/${id}/matched-colleges?refresh=true`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const resData = await res.json();
+      if (res.ok && Array.isArray(resData.data) && resData.data.length > 0) {
+        setProblem((prev: any) => ({ ...prev, collegeSuggestions: resData.data }));
+      } else {
+        setCollegeMatchError(resData.message || 'Could not fetch matched colleges from Hugging Face model.');
+      }
+    } catch (err: any) {
+      setCollegeMatchError(err.message || 'Failed to connect to college matcher service.');
+    } finally {
+      setMatchingColleges(false);
+    }
+  };
 
   const handleToggleUpvote = async () => {
     const nextUpvoted = !hasUpvoted;
@@ -813,12 +844,35 @@ const ProblemDetail = () => {
                 <h3 className="text-xs font-bold text-[#2c4230] uppercase tracking-wider flex items-center gap-2 font-mono">
                   <Building2 className="text-[#4a6b4e]" size={16} /> Allocated Universities
                 </h3>
-                {collegeSuggestions.length > 0 && (
-                  <span className="text-[10px] font-bold text-[#4a6b4e] bg-[#4a6b4e]/10 px-2.5 py-0.5 rounded-full">
-                    {collegeSuggestions.length} Matches
-                  </span>
-                )}
+                <div className="flex items-center gap-2">
+                  {collegeSuggestions.length > 0 && (
+                    <span className="text-[10px] font-bold text-[#4a6b4e] bg-[#4a6b4e]/10 px-2.5 py-0.5 rounded-full">
+                      {collegeSuggestions.length} Matches
+                    </span>
+                  )}
+                  <button
+                    onClick={handleTriggerCollegeMatching}
+                    disabled={matchingColleges}
+                    className="text-[11px] font-bold text-[#4a6b4e] hover:text-[#2c4230] flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#e2ded0] hover:bg-[#f4f1e1] transition-all disabled:opacity-50 cursor-pointer"
+                    title="Match Colleges using Hugging Face TeamSetu Model"
+                  >
+                    <RefreshCw size={12} className={matchingColleges ? 'animate-spin' : ''} />
+                    {matchingColleges ? 'Matching...' : 'Match Colleges'}
+                  </button>
+                </div>
               </div>
+
+              {collegeMatchError && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-start gap-2">
+                  <AlertTriangle size={14} className="shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold">{collegeMatchError}</p>
+                    <p className="text-[11px] text-red-600 mt-0.5">
+                      Ensure your Hugging Face access token is configured in backend environment variables for ZeroGPU quota.
+                    </p>
+                  </div>
+                </div>
+              )}
               
               {collegeSuggestions.length > 0 ? (
                 <div className="space-y-3">
@@ -896,12 +950,20 @@ const ProblemDetail = () => {
                   <h4 className="font-bold text-sm text-[#2c4230]">{assignedUniversityName}</h4>
                 </div>
               ) : (
-                <div className="p-5 bg-[#f4f1e1]/60 rounded-2xl border border-[#e2ded0] text-center space-y-2">
+                <div className="p-5 bg-[#f4f1e1]/60 rounded-2xl border border-[#e2ded0] text-center space-y-3">
                   <GraduationCap size={28} className="mx-auto text-[#7d8c7c]" />
                   <h4 className="text-xs font-bold text-[#2c4230]">Awaiting University Allocation</h4>
                   <p className="text-[11px] text-[#556958]">
                     AI matching engine evaluates nearby engineering colleges based on domain specialization and proximity.
                   </p>
+                  <button
+                    onClick={handleTriggerCollegeMatching}
+                    disabled={matchingColleges}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-[#2c4230] text-[#f4f1e1] hover:bg-[#3d5a42] transition-colors disabled:opacity-50 cursor-pointer shadow-sm"
+                  >
+                    <Sparkles size={14} className={matchingColleges ? 'animate-spin' : ''} />
+                    {matchingColleges ? 'Matching via TeamSetu...' : 'Run College Matcher'}
+                  </button>
                 </div>
               )}
             </section>
