@@ -190,6 +190,14 @@ flowchart TD
   <img src="https://img.shields.io/badge/MEKO-MCP%20Memory%20Protocol-4A6B4E?style=for-the-badge&logo=probot&logoColor=white" alt="Meko Protocol" />
 </p>
 
+<p align="center">
+  <img src="./images/meko_dashboard.png" alt="Meko Context & Memory Dashboard" width="100%" style="border-radius: 10px; border: 1px solid #333; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+</p>
+
+<p align="center">
+  <em>Live Meko Datapack Dashboard: 142.3K tokens indexed, 48 extracted long-term memories across 62 vector chunks in Datapack <code>4467fb86-f204-4aeb-9ba3-1af2370806e4</code>.</em>
+</p>
+
 **[Meko](https://meko.ai/) is integrated into Samadhan Setu's development and runtime agent lifecycle**, serving as the institutional memory and contextual telemetry engine.
 
 ### How Meko Powers Samadhan Setu:
